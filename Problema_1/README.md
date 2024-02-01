@@ -1,6 +1,6 @@
 # Case Python
 
-Problema 1.
+Problema 1
 
 ## Descrição da aplicação 
 
