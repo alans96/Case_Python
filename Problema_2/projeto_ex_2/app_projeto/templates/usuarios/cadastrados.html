@@ -1,0 +1,31 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo%}
+<a style="text-decoration: none; color: black;" href="{% url 'home'%}">HOME</a>
+<h1 style="text-align: center;">Compostos cadastrados</h1>
+<dir  class="container">
+    <table class="table table-bordered table-striped">
+        <tr style="text-align: center;"">
+            <th>CAS</th>
+            <th>Contaminante</th>
+            <th>VOR</th>
+            <th>VOR Valor (mg/l)</th>
+            <th>Amb. Aberto C (mg/l)</th>
+            <th>Amb. Aberto NC (mg/l)</th>
+            <th>Amb. Fechado C (mg/l)</th>
+            <th>Amb. Fechado NC (mg/l)</th>
+        </tr>
+        {% for cadastro in cadastros%}
+        <tr>
+            <th>{{cadastro.cas}}</th>
+            <th>{{cadastro.contaminante}}</th>
+            <th>{{cadastro.vor}}</th>
+            <th>{{cadastro.vor_valor}}</th>
+            <th>{{cadastro.abe_c}}</th>
+            <th>{{cadastro.abe_nc}}</th>
+            <th>{{cadastro.fec_c}}</th>
+            <th>{{cadastro.fec_nc}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</dir>
+{% endblock%}

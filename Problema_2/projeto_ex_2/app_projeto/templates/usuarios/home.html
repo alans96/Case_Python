@@ -1,0 +1,27 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo%}
+<a style="text-decoration: none; color: black;" href="{% url 'listagem_contaminantes' %}">Lista de Cadastro</a>
+<form action="{% url 'listagem_contaminantes' %}" method="post">
+  {% csrf_token %}
+  <div style="text-align: center;" class="container">
+    <h1>Cadastro </h1>
+    Composto <input name="contaminante" class="form-control-sm" type="text">
+    CAS N° <input name="cas" class="form-control-sm" type="text">
+  </div>
+  <div style="text-align: center;" class="container">
+    VOR <input name="vor" class="form-control-sm" type="text">
+    VOR Valor (mg/l) <input name="vor_valor" class="form-control-sm" type="text">
+  </div>
+  <div style="text-align: center;" class="container">
+    Ambiente Aberto C (mg/l) <input name="abe_c" class="form-control-sm" type="text">
+    Ambiente Fechado C (mg/l) <input name="fec_c" class="form-control-sm" type="text">
+  </div>
+  <div style="text-align: center ;" class="container">
+    Ambiente Aberto NC (mg/l) <input name="abe_nc" class="form-control-sm" type="text">
+    Ambiente Fechado NC (mg/l) <input name="fec_nc" class="form-control-sm" type="text">
+  </div>
+  <div>
+    <button style="display: block; margin: 0 auto;" class="form-control-sm">Enviar</button>
+  </div>
+</form>
+{% endblock%}
