@@ -1,3 +1,4 @@
+# Importações
 import pandas as pd
 import re
 from datetime import datetime
@@ -5,7 +6,7 @@ import os
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 
-
+# Def de centralizar a celula do excel
 def centralizar_celulas(ws, inicio_linha, inicio_coluna, fim_linha, fim_coluna):
     for row in ws.iter_rows(min_row=inicio_linha, min_col=inicio_coluna, max_row=fim_linha, max_col=fim_coluna):
         for cell in row:
@@ -64,20 +65,26 @@ centralizar_celulas(ws, 7, 15, 7, 18)
 centralizar_celulas(ws, 7, 19, 7, 22)
 
 # Dados
-for row in range(6, 30, 2):
-    # Mesclar células com coluna 3
-    for start_column in [1, 9]:
-        ws.merge_cells(start_row=row, start_column=start_column, end_row=row+1, end_column=start_column+2)
+
 # Mesclar células com coluna 4 
 for row in range(6, 30,2):
     ws.merge_cells(start_row=row, start_column=4, end_row=row+1, end_column=7)
-# Mesclar células com coluna 1 
-for row in range(6, 30,2):
-    ws.merge_cells(start_row=row, start_column=12, end_row=row+1, end_column=12)
+
+# Mesclar células com coluna 3
+for row in range(6, 30, 2):
+    for start_column in [1, 9]:
+        ws.merge_cells(start_row=row, start_column=start_column, end_row=row+1, end_column=start_column+2)
+
 # Mesclar células com coluna 2 
 for row in range(6, 30, 2):
     for start_column in [13]:
-        ws.merge_cells(start_row=row, start_column=start_column, end_row=row+1, end_column=start_column+1)
+        ws.merge_cells(start_row=row, start_column=start_column, end_row=row+1, end_column=start_column+1)       
+  
+# Mesclar células com coluna 1 
+for row in range(6, 30,2):
+    ws.merge_cells(start_row=row, start_column=12, end_row=row+1, end_column=12)
+    
+
 
 
 # Coluna Inalação
@@ -90,6 +97,7 @@ for row in range(7, 30):
 for row in range(6, 30, 2):
     for start_column in [17, 21]:
         ws.merge_cells(start_row=row, start_column=start_column, end_row=row+1, end_column=start_column+1)
+
 
 # Incerção de Dados
 wb_dados = load_workbook(pasta)
@@ -107,13 +115,13 @@ for index, value in enumerate(coluna_contaminante):
 
 # Incerção Coluna Efeito
 efeito = ['C', 'NC']
-for i in range(11):  # Repetir 11 vezes
+for i in range(11):
     for index, value in enumerate(efeito):
         ws.cell(row=8 + 2*i + 1*index, column=8).value = value
 
 # Incerção Coluna Concentração
 concentracao = ['500']
-for _ in range(11):  # Repetir 11 vezes
+for _ in range(11):
     for index, value in enumerate(concentracao):
         value = float(value)
         ws.cell(row=8 + 2*_ + 2*index, column=9).value = value
@@ -122,7 +130,7 @@ Workbook.save('relatorio.xlsx')
 # Incerção Coluna vor_valor
 # VOR Texto
 concentracao = ['CETESB-ASUB_2021']
-for _ in range(11):  # Repetir 11 vezes
+for _ in range(11):
     for index, value in enumerate(concentracao):
         ws.cell(row=8 + 2*_ + 2*index, column=13).value = value
 
@@ -152,9 +160,7 @@ for i, (value_C, value_NC) in enumerate(amb_fec):
 
 
 
-
 # Analise do Dados
-
 # Condiçõs para o Ambiente ABERTO   
 for linha in range(1, 12):
     elemento1 = float(ws_dados["F"][linha].value)
