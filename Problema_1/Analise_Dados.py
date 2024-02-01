@@ -1,3 +1,4 @@
+#Importações
 import pandas as pd
 import re
 from datetime import datetime
@@ -38,7 +39,8 @@ for arquivo in os.listdir(pasta):
     if arquivo.endswith('.csv') and arquivo.startswith('arquivo_out_Area_1'):
         caminho_arquivo = os.path.join(pasta, arquivo)
         arquivos_csv.append(caminho_arquivo)
-
+        
+# Processar os arquivos CSV Area 1
 for arquivo_csv in arquivos_csv:
     # Área 1
     dados_1 = pd.read_csv(arquivo_csv)
@@ -58,7 +60,7 @@ for arquivo in os.listdir(pasta):
         caminho_arquivo = os.path.join(pasta, arquivo)
         arquivos_csv_2.append(caminho_arquivo) 
 
-# Processar os arquivos CSV
+# Processar os arquivos CSV Area 2
 for arquivo_csv in arquivos_csv_2:
     dados_2 = pd.read_csv(arquivo_csv)
     emp_sol = dados_2.columns[1]
@@ -80,7 +82,7 @@ for arquivo in os.listdir(pasta):
         caminho_arquivo = os.path.join(pasta, arquivo)
         arquivos_csv_3.append(caminho_arquivo) 
 
-# Processar os arquivos CSV
+# Processar os arquivos CSV Area 3
 for arquivo_csv in arquivos_csv_3:
     dados_3 = pd.read_csv(arquivo_csv)
     ensaio = dados_3.columns[1]
@@ -126,7 +128,7 @@ for arquivo in os.listdir(pasta):
         caminho_arquivo = os.path.join(pasta, arquivo)
         arquivos_csv_4.append(caminho_arquivo) 
 
-# Processar os arquivos CSV
+# Processar os arquivos CSV Area 4
 for arquivo_csv in arquivos_csv_4:
     dados_4 = pd.read_csv(arquivo_csv)
     dados_4.columns = ['Parâmetros', 'Parâmetros_2', 'Unidade', 
