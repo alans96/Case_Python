@@ -1,7 +1,8 @@
+# Importações
 from openpyxl import load_workbook, Workbook
 
 
-# Listas
+# Listas e Variáveis
 valores_numeros_coluna1 = []
 valores_numeros_coluna2 = []
 valor_amb_aberto_C = []
